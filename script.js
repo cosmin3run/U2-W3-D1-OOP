@@ -8,11 +8,15 @@ class User {
   static compare() {
     if (x.age > y.age) {
       return x.firstName + " " + x.lastName + " is older than " + y.firstName + " " + y.lastName;
-    } else return y.firstName + " " + y.lastName + " is older than " + x.firstName + " " + x.lastName;
+    } else if (y.age > x.age) {
+      return y.firstName + " " + y.lastName + " is older than " + x.firstName + " " + x.lastName;
+    } else {
+      return y.firstName + " e " + x.firstName + " hanno la stessa età";
+    }
   }
 }
-const x = new User("Cosmin", "Petrea", 32, "Mantova");
-const y = new User("Stevano", "Miceli", 31, "Friuli");
+const x = new User("Cosmin", "Petrea", 53, "Mantova");
+const y = new User("Stefano", "Miceli", 52, "Friuli");
 
 console.log(User.compare());
 
