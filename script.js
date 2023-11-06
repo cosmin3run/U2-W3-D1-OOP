@@ -31,26 +31,23 @@ class Pet {
   }
 }
 
-list = [];
+let list = [];
 
 const form = document.getElementById("pet");
+const ul = document.getElementById("newUl");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const newPet = new FormData(form);
-  for (item of newPet) {
-    console.log(newPet);
-  }
-});
+form.onsubmit = function (event) {
+  event.preventDefault();
+  let petName = document.getElementById("petName").value;
+  let ownerName = document.getElementById("ownerName").value;
+  let species = document.getElementById("species").value;
+  let breed = document.getElementById("breed").value;
 
-// form.onsubmit = function () {
-//   event.preventDefault();
-//   petName = document.getElementById("petName").value;
-//   ownerName = document.getElementById("ownerName").value;
-//   species = document.getElementById("species").value;
-//   breed = document.getElementById("breed").value;
-
-//   const newPet = new Pet(petName, ownerName, species, breed);
-//   list.push(newPet);
-// };
-// console.log(list);
+  const newPet = new Pet(petName, ownerName, species, breed);
+  list.push(newPet);
+  let li = document.createElement("li");
+  li.innerText = newPet.petName + " " + newPet.ownerName + " " + newPet.species + " " + newPet.breed;
+  ul.appendChild(li);
+  console.log(list);
+};
+console.log(list);
